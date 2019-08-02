@@ -1,4 +1,6 @@
 {
+  "name": "splunk/logging",
+  "description": "Module for visualization plugins within Magento instance",
   "repositories": [
     {
       "type": "vcs",
