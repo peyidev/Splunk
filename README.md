@@ -21,4 +21,8 @@ composer require splunk/logging:dev-master
 
 ## Usage
 
-TBD
+Instructions for implementing Splunk in your store.
+   
+    1. Open a Splunk account  https://www.splunk.com/en_us/software/splunk-cloud.html
+    2. Create an http event colector on your instance
+    3. Use your provided credentials in the admin
