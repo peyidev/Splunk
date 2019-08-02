@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="splunk" translate="label" sortOrder="10">
+            <label>Splunk</label>
+        </tab>
+        <section id="splunk_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Splunk Config</label>
+            <tab>splunk</tab>
+            <resource>Splunk_Logger::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Splunk Info</label>
+                <!--<field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Module Enable</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <field id="splunk_howto_description" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>
+                       Instructions for implementing Splunk in your store.
+                    </label>
+                    <comment>
+                        1. Open a Splunk account  https://www.splunk.com/en_us/software/splunk-cloud.html
+                        2. Create an http event colector on your instance
+                        3. Use your provided credentials here
+                    </comment>
+
+                </field>
+
+                <field id="splunkcloud_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Your Splunk Cloud instance url</label>
+                    <comment>The url usually has the format https://xxxxxxxxx.cloud.splunk.com</comment>
+                </field>
+
+                <field id="splunkhttp_token" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Your http token</label>
+                    <comment>The token can be generated following the next instructions http://dev.splunk.com/view/event-collector/SP-CAAAE7F</comment>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

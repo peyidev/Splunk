@@ -1,0 +1,16 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/igorw/monolog"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Splunk\\Logging\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}

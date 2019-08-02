@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Psr\Log\LoggerInterface" type="Splunk\Logging\Logger\Splunklogger" />
+    <type name="Splunk\Logging\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Splunk\Logging\Logger\Splunklogger">
+        <arguments>
+            <argument name="name" xsi:type="string">SplunkLogFile</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Splunk\Logging\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\App\Response\Http">
+        <plugin name="splunk_before_render" type="Splunk\Logging\Plugin\Splunk" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Framework\App\Response\Http">
+        <plugin name="splunk_product_view" type="Splunk\Logging\Plugin\Catalog\ProductView" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Checkout\Controller\Cart\Add">
+        <plugin name="splunk_add_to_cart" type="Splunk\Logging\Plugin\Checkout\Add" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Checkout\Controller\Index\Index">
+        <plugin name="splunk_render_checkout" type="Splunk\Logging\Plugin\Checkout\Index" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Checkout\Api\ShippingInformationManagementInterface">
+        <plugin name="splunk_save_shipping" type="Splunk\Logging\Plugin\Checkout\Shipping" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="splunk_save_payment_and_pay" type="Splunk\Logging\Plugin\Checkout\Payment" sortOrder="1" disabled="false"/>
+    </type>
+
+
+</config>
